@@ -19,7 +19,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
 
 
 
-    void start()
+    void Start()
     {
         if(!PhotonNetwork.IsConnected){
             PhotonNetwork.ConnectUsingSettings();
@@ -49,5 +49,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Connected to Master Server");
     }
 
+    //change scene use photon
+    [PunRPC]
+    public void ChangeScene (string sceneName)
+    {
+        PhotonNetwork.LoadLevel (sceneName);
+    }
 }
 
